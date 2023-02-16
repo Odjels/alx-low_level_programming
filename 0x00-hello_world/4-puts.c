@@ -1,9 +1,9 @@
-#include <stdio>
-/*
-  * main - print a code using puts
-  *
-  * Return : 0
-*/
+ #include <stdio>
+ /*
+   * main - print a code using puts
+   *
+   * Return : 0
+ */
 
  int main(void)
 {
