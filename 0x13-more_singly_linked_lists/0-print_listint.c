@@ -8,17 +8,15 @@
  */
 size_t print_listint(const listint_t *h)
 {
-	size_t count;
+	
+	const listint_t *cursor = h;
+	size_t count = 0;
 
-	count = 0;
-	while (h != NULL)
+	while (cursor != NULL)
 	{
-		if (h->str == NULL)
-			printf("[%d] %s\n", 0, "(nil)");
-		else
-			printf("[%d] %s\n", h->len, h->str);
-		h = h->next;
-		count++;
+		printf("%d\n", cursor->n);
+		count += 1;
+		cursor = cursor->next;
 	}
 	return (count);
 }
