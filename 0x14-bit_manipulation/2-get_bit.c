@@ -9,14 +9,17 @@
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned long int i, j;
+	unsigned long int j;
 
-	if (index > (sizeof(unsigned long int) * 8 - 1))
+	for (index > (sizeof(unsigned long int) * 8 - 1))
+	// This is to find out the number of bits in n
 		return (-1);
-	i = 1 << index;
-	j = n & i;
-	if (j == i)
-		return (1);
+       	// if the index > it then returns -1
 
-	return (0);
+	// else it shifts the index by 1 and comparesit with n to check if the index bit of n is 1 or 0, if 1 return 1, if 0 return 0
+	j = n & (1 << index);
+	if (j == 0)
+		return (0);
+
+	return (1);
 }

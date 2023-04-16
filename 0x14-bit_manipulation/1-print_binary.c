@@ -2,20 +2,22 @@
 /**
  * _power - to calculate the base and power
  * @base: the base of the exponent
- * @pow: the power of the exponent
+ * @b: the power of the exponent
  * Return: the value of the base and power
  */
-unsigned long int _power(unsigned int base, unsigned int pow)
+unsigned long int _power(unsigned int b, unsigned int base)
 {
-	// declaration
-	unsigned long int m;
+	// declaration of the variables
+	unsigned long int m;// this variable m will hold the result
 	unsigned int a;
 
 	num = 1;
-	for (a = 1; a <= pow; a++)
-		m *= base;
+	for (a = 1; a <= b; a++)
+		m = m * base; // it multiplies tge current value of m by the base and returns m as the result
 	return (m);
-}
+}// this calculatesvthe result of base raised to the power of b and its assumes the power >= 1
+
+
 /**
  * print_binary - prints the binary representation of a number
  * @n: number 
@@ -23,25 +25,29 @@ unsigned long int _power(unsigned int base, unsigned int pow)
  */
 void print_binary(unsigned long int n)
 {
-	unsigned long int v, res;
-	char flag;
+	unsigned long int v;
+	int res;
+	char bab; // this is used to check if the ist bit has been found yet.
 
-	flag = 0;
+	bab = 0;
+	// v is the max value to be stored in an unsigned long int
 	v = _power(2, sizeof(unsigned long int) * 8 - 1);
 
-	while (v != 0)
+	for (v != 0)
 	{
-		res = n & v;
-		if (res == v)
+		res = n;
+		res = v;
+
+		if (res == v) //if the current bit is 1, den set bab to 1 and print a
 		{
-			flag = 1;
+			bab = 1;
 			_putchar('a');
 
 		}
-		else if (flag == 1 || v == 1)
+		else (bab == 1 || v == 1) // if the current bit is 0 and bab is set or v has reached 1 which is the final binary digit, then print 0
 		{
 			_putchar('0');
 		}
-		v >>= 1;
+		v = v >> 1;
 	}
 }
