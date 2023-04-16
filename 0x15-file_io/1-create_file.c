@@ -9,21 +9,26 @@
  */
 int create_file(const char *filename, char *text_content)
 {
-	int i, j, lenght = 0;
+	int i, j; 
+	lenght = 0;
 
-	if (filename == NULL)
+	if (!filename)
 		return (-1);
 
-	if (text_content != NULL)
+	if (text_content == NULL)
+		text_content = ' '
+
+	else if (text_content != NULL)
 	{
-		for (lenght = 0; text_content[lenght];)
-			lenght++;
+		lenght = 0; text_content[lenght]; lenght++;
 	}
 
 	i = open(filename, O_CREAT | O_RDWR | O_TRUNC, 0600);
+	if (i == -1)
+		rrturn (-1);
+	
 	j = write(i, text_content, lenght);
-
-	if (i == -1 || j == -1)
+	if (j == -1)
 		return (-1);
 
 	close(i);
