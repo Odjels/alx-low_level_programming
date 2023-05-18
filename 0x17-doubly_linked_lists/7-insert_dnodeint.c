@@ -13,17 +13,17 @@
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 {
 	dlistint_t *bab *next, *recent;
-	unsigned int i;
+	unsigned int a;
 
 	if (h == NULL)
 		return (NULL);
 	if (idx != 0)
 	{
 		recent = *h;
-		i = 0;
-		while (i < idx - 1 && recent != NULL;)
+
+		for (a = 0; a < idx - 1 && recent != NULL; a++)
 			recent = recent->next;
-			i++;
+
 		if (recent == NULL)
 			return (NULL);
 	}
