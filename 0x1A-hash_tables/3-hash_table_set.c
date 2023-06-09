@@ -46,8 +46,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		return (0);
 	}
 	new_val->value = val_copy;
-	new_val->next = ht->array[index];
-	ht->array[index] = new_val;
+	new_val->next = ht->array[indx];
+	ht->array[indx] = new_val;
 
 	return (1);
 }
