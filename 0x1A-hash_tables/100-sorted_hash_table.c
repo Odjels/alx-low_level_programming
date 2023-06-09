@@ -48,7 +48,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 {
 	shash_node_t *new_val, *temp;
 	char *val_copy;
-	unsigned long int indx;
+	unsigned long int index;
 
 	if (ht == NULL || key == NULL || *key == '\0' || value == NULL)
 		return (0);
@@ -57,7 +57,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 	if (val_copy == NULL)
 		return (0);
 
-	indx = key_indx((const unsigned char *)key, ht->size);
+	index = key_index((const unsigned char *)key, ht->size);
 	temp = ht->shead;
 	while (temp)
 	{
@@ -129,21 +129,21 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
  */
 char *shash_table_get(const shash_table_t *ht, const char *key)
 {
-	shash_node_t *nod;
-	unsigned long int indx;
+	shash_node_t *node;
+	unsigned long int index;
 
 	if (ht == NULL || key == NULL || *key == '\0')
 		return (NULL);
 
-	indx = key_indx((const unsigned char *)key, ht->size);
-	if (indx >= ht->size)
+	index = key_index((const unsigned char *)key, ht->size);
+	if (index >= ht->size)
 		return (NULL);
 
-	nod = ht->shead;
-	while (nod != NULL && strcmp(nod->key, key) != 0)
-		nod = nod->snext;
+	node = ht->shead;
+	while (node != NULL && strcmp(node->key, key) != 0)
+		node = node->snext;
 
-	return ((nod == NULL) ? NULL : nod->value);
+	return ((node == NULL) ? NULL : node->value);
 }
 
 /**
