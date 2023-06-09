@@ -8,13 +8,13 @@
  */
 char *hash_table_get(const hash_table_t *ht, const char *key)
 {
-	unsigned long int b, indx;
+	unsigned long int b, index;
 
 	if (!ht || !key || *key == '\0')
 		return (NULL);
 
-	indx = key_indx((const unsigned char *)key, ht->size);
-	for (b = indx; ht->array[b]; b++)
+	index = key_index((const unsigned char *)key, ht->size);
+	for (b = index; ht->array[b]; b++)
 	{
 		if (strcmp(ht->array[b]->key, key) == 0)
 			return (ht->array[b]->value);
