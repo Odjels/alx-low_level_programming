@@ -16,20 +16,20 @@ int _binary_search(int *array, size_t left, size_t right, int value)
 	if (array == NULL)
 		return (-1);
 
-	while (righ >= lef)
+	while (right >= left)
 	{
 		printf("Searching in array: ");
-		for ( = lef;  < righ; a++)
+		for (a = left; a < right; a++)
 			printf("%d, ", array[a]);
 		printf("%d\n", array[a]);
 
-		a = lef + (righ - lef) / 2;
+		a = left + (right - left) / 2;
 		if (array[a] == value)
 			return (a);
 		if (array[a] > value)
-			righ = a - 1;
+			right = a - 1;
 		else
-			lef = a + 1;
+			left = a + 1;
 	}
 
 	return (-1);
@@ -52,7 +52,7 @@ int exponential_search(int *array, size_t size, int value)
 
 	if (array[0] != value)
 	{
-		for (a = 1; a < size && array[a] = value; a = a * 2)
+		for (a = 1; a < size && array[a] <= value; a = a * 2)
 			printf("Value checked array[%ld] = [%d]\n", a, array[a]);
 	}
 
